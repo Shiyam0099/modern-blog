@@ -1,0 +1,111 @@
+type Query {
+  posts(findPost: String, page: Int, pageSize: Int): [Post!]!
+  myPosts(search: String, page: Int, pageSize: Int): [Post!]!
+  users(id: ID, page: Int, pageSize: Int): [User!]!
+  comments(page: Int, pageSize: Int): [Comment!]!
+}
+type Mutation {
+  signup(data: signupInput): signupPayload!
+  signin(email: String!, password: String!): signinPayload!
+  deleteUser: String!
+  updateUser(data: updateUserInput!): User!
+  createPost(data: createPostInput): Post!
+  deletePost(id: ID!): String!
+  updatePost(id: ID!, data: updatePostInput!): Post!
+  createComment(data: createCommentInput): Comment!
+  deleteComment(id: ID!): String!
+  updateComment(id: ID!, data: updateCommentInput!): Comment!
+}
+
+input signupInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input updateUserInput {
+  name: String
+  email: String
+  password: String
+}
+
+input createPostInput {
+  title: String!
+  body: String!
+  published: Boolean!
+}
+input updatePostInput {
+  title: String
+  body: String
+  published: Boolean
+}
+input createCommentInput {
+  text: String!
+  post: ID!
+}
+input updateCommentInput {
+  text: String
+}
+
+type Subscription {
+  count: Int!
+  comment(postID: ID!): CommentSubscriptionPayload!
+  post: PostSubscriptionPayload!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String
+  password: String!
+  posts: [Post!]!
+  comments: [Comment!]
+  myProfile: Boolean!
+  createdAt: String
+  updatedAt: String
+}
+
+type Post {
+  id: ID!
+  title: String!
+  body: String!
+  published: Boolean!
+  author: User!
+  comments: [Comment!]
+  createdAt: String
+  updatedAt: String
+}
+
+type Comment {
+  id: ID!
+  text: String!
+  author: User!
+  post: Post!
+  createdAt: String
+  updatedAt: String
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+type PostSubscriptionPayload {
+  mutation: MutationType!
+  data: Post!
+}
+type CommentSubscriptionPayload {
+  mutation: MutationType!
+  data: Comment!
+}
+type signupPayload {
+  message: String!
+  user: User!
+  token: String!
+}
+type signinPayload {
+  message: String!
+  user: User!
+  token: String!
+}

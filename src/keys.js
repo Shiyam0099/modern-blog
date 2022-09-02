@@ -1,0 +1,7 @@
+const secretKey = "wakandaforever";
+
+export { secretKey as default };
+
+// token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY4MjJhYmIwLTBhNmUtNDcxMC04ZWRjLTE5ODk3ZDBkZjUzOSIsImlhdCI6MTY1MDgzNDA3NywiZXhwIjoxNjU0NDM0MDc3fQ.6AiHt7K_oDAToUi1iKeKeLclXxjuAvqbgfqOFz_KRHQ
+
+//{ "Authorization" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY4MjJhYmIwLTBhNmUtNDcxMC04ZWRjLTE5ODk3ZDBkZjUzOSIsImlhdCI6MTY1MDgzNDI5OCwiZXhwIjoxNjU0NDM0Mjk4fQ.Db3zAvT8SLY86H3GKvrkv86ShSM07cxysV37SDLb9Vg"}
